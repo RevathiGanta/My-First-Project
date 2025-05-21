@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Style6.css">
   <style>
     * {
       margin: 0;
@@ -16,25 +15,28 @@
       font-family: 'Poppins', sans-serif;
       background: #f4f6f9;
       display: flex;
+      flex-direction: column;
     }
+
     nav {
-      width: 220px;
-      height: 100vh;
+      width: 100%;
       background: #2c3e50;
       color: #ecf0f1;
-      padding: 2rem 1rem;
-      position: fixed;
+      padding: 1rem;
+      position: relative;
+      z-index: 1000;
     }
     nav h2 {
-      margin-bottom: 2rem;
       text-align: center;
       font-size: 1.5rem;
     }
     nav ul {
       list-style: none;
-    }
-    nav ul li {
-      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
     }
     nav ul li a {
       color: #ecf0f1;
@@ -45,16 +47,19 @@
     nav ul li a:hover {
       color: #1abc9c;
     }
+
     main {
-      margin-left: 220px;
-      width: calc(100% - 220px);
+      width: 100%;
+      padding: 0;
     }
+
     header {
       background: linear-gradient(to right, #1abc9c, #16a085);
       color: white;
       padding: 3rem 1rem;
       text-align: center;
     }
+
     header img {
       width: 120px;
       height: 120px;
@@ -62,20 +67,17 @@
       border: 4px solid #fff;
       margin-bottom: 1rem;
     }
-    header h1 {
-      font-size: 2rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
+
     .section {
       padding: 2rem;
       animation: fadeIn 1s ease-in-out;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .carousel {
       display: flex;
       overflow-x: auto;
@@ -83,35 +85,90 @@
       scroll-behavior: smooth;
       padding: 1rem 0;
     }
+
     .carousel-item {
       flex: 0 0 auto;
-      width: 280px;
+      width: 200px;
       background: white;
-      padding: 1.5rem;
+      padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
     }
-    .carousel-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
-    .carousel-item img {
+
+    .card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
       width: 100%;
+      aspect-ratio: 3 / 2;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-front {
+      background: #fff;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: auto;
       border-radius: 10px;
-      margin-bottom: 1rem;
     }
-    h2 {
-      margin-bottom: 1rem;
-      color: #2c3e50;
+
+    .download-btn {
+      margin-top: 10px;
+      background-color: #1e40af;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
     }
+
+    .card-back {
+      background-color: #1e3a8a;
+      color: #fff;
+      transform: rotateY(180deg);
+      text-align: center;
+    }
+
     ul.roles {
       margin: 1rem 0;
       padding-left: 1.2rem;
     }
+
     ul.roles li {
       margin-bottom: 0.5rem;
     }
+
     footer {
       background: #2c3e50;
       color: white;
@@ -119,9 +176,27 @@
       padding: 2rem;
       margin-top: 2rem;
     }
+
+    @media (min-width: 768px) {
+      nav {
+        position: fixed;
+        height: 100vh;
+        width: 220px;
+        flex-direction: column;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+      }
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <h2>My Portfolio</h2>
     <ul>
@@ -143,7 +218,7 @@
 
     <section class="section" id="career">
       <h2>Career Objective</h2>
-      <p>To obtain a challenging position as a Graphic Designer in a creative environment where I can utilize my design skills, technical expertise, and passion for visual storytelling, while also leveraging my engineering background to bring a unique perspective to problem-solving and innovation.</p>
+      <p>To obtain a challenging position as a Graphic Designer in a creative environment...</p>
     </section>
 
     <section class="section" id="skills">
@@ -166,92 +241,93 @@
       <ul class="roles">
         <li>Designed branding materials using Photoshop, Illustrator, and InDesign.</li>
         <li>Created social media posts, web banners, and digital flyers.</li>
-        <li>Collaborated with developers to implement HTML/CSS web components.</li>
-        <li>Managed design projects from concept to delivery under tight deadlines.</li>
-        <li>Used Canva for rapid prototyping and brand-aligned presentations.</li>
       </ul>
 
-      <h3>Junior Engineer (Line Leader) – Bharat FIH (2 Years)</h3>
+      <h3>Junior Engineer – Bharat FIH (2 Years)</h3>
       <ul class="roles">
         <li>Led a production line ensuring efficient mobile phone assembly processes.</li>
         <li>Monitored equipment performance and coordinated daily output goals.</li>
-        <li>Trained and supervised operators for quality and safety compliance.</li>
-        <li>Worked with QA teams to troubleshoot and resolve assembly line issues.</li>
-        <li>Maintained detailed reports using MS Office tools for production analysis.</li>
       </ul>
     </section>
-    <section class="section" id="Projects">
+
+    <section class="section" id="projects">
       <h2>Projects</h2>
-    <div class="card-grid">
-    <!-- CARD 1 -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="card-front" onclick="flipCard(this)">
-        <img src="3D Design-01.png" alt="Card 1">
-        <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-      </div>
-      <div class="card-back" onclick="flipCard(this)">
-        <h3>Project 1</h3>
-        <p>📥 Collection of faulty data loggers from various stations.</p>
-      </div>
-    </div>
-  </div>
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="3D Design-01.png" alt="Card 1">
+              <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 1</h3>
+              <p>📥 Collection of faulty data loggers from stations.</p>
+            </div>
+          </div>
+        </div>
 
-  <!-- CARD 2 -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="card-front" onclick="flipCard(this)">
-        <img src="Block Diagrams-01.png" alt="Card 2">
-        <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-      </div>
-      <div class="card-back" onclick="flipCard(this)">
-        <h3>Project 2</h3>
-        <p>🚦 Distributed EI architecture enables signal control across multiple locations within the NTPC yard.</p>
-      </div>
-    </div>
-  </div>
+        <!-- Card 2 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Block Diagrams-01.png" alt="Card 2">
+              <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 2</h3>
+              <p>🚦 Distributed EI network at NTPC yard.</p>
+            </div>
+          </div>
+        </div>
 
-  <!-- CARD 3 -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="card-front" onclick="flipCard(this)">
-        <img src="India's waste-01-01.png" alt="Card 3">
-        <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-      </div>
-      <div class="card-back" onclick="flipCard(this)">
-        <h3>Project 3</h3>
-        <p>🧯 Toxic exposure from improper dismantling and burning of electronics.</p>
-      </div>
-    </div>
-  </div>
+        <!-- Card 3 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="India's waste-01-01.png" alt="Card 3">
+              <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 3</h3>
+              <p>🧯 India's e-waste mess and pollution hazards.</p>
+            </div>
+          </div>
+        </div>
 
-  <!-- CARD 4 -->
-  <div class="card">
-    <div class="card-inner">
-      <div class="card-front" onclick="flipCard(this)">
-        <img src="Womens Day Poster-01.png" alt="Card 4">
-        <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+        <!-- Card 4 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Womens Day Poster-01.png" alt="Card 4">
+              <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 4</h3>
+              <p>👩‍🎨 Celebrating strength and achievements of women.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-back" onclick="flipCard(this)">
-        <h3>Project 4</h3>
-        <p>Today, we celebrate the power, resilience, and grace of women everywhere </p>
-      </div>
-    </div>
-  </div>
-
-</div>
-</section>
+    </section>
 
     <section class="section" id="contact">
       <h2>Contact</h2>
       <p>Email: gantarevathi457@gmail.com | Phone: 9441925126</p>
-    <address>Permenent Address</address>
-    <P>Thangellamudi,ThilakNagar,Eluru,Eluru Dist A.p Pin No 534005</P>
-    <address>Temporary Address</address>
-    <P>Tidco house,Mangalagiri,Guntur Dist A.p Pin No 522503</P>
+      <address>Thangellamudi, Eluru, A.P 534005</address>
+      <address>Tidco House, Mangalagiri, Guntur, A.P 522503</address>
     </section>
   </main>
-    <script src="script6.js"></script>
+
+  <footer>
+    <p>&copy; 2025 Mudalla Revathi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+  </script>
+
 </body>
 </html>
-
