@@ -14,16 +14,21 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: #f4f6f9;
+      display: flex;
+      flex-direction: column;
     }
 
     nav {
+      width: 100%;
       background: #2c3e50;
       color: #ecf0f1;
-      padding: 1.5rem 1rem;
+      padding: 1rem;
+      position: relative;
+      z-index: 1000;
     }
     nav h2 {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
     }
     nav ul {
       list-style: none;
@@ -43,12 +48,18 @@
       color: #1abc9c;
     }
 
+    main {
+      width: 100%;
+      padding: 0;
+    }
+
     header {
       background: linear-gradient(to right, #1abc9c, #16a085);
       color: white;
       padding: 3rem 1rem;
       text-align: center;
     }
+
     header img {
       width: 120px;
       height: 120px;
@@ -59,7 +70,37 @@
 
     .section {
       padding: 2rem;
+      animation: fadeIn 1s ease-in-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 200px;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .carousel-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -68,64 +109,69 @@
 
     .card {
       perspective: 1000px;
-      cursor: pointer;
     }
+
     .card-inner {
       position: relative;
       width: 100%;
-      height: 350px;
+      aspect-ratio: 3 / 2;
       transform-style: preserve-3d;
       transition: transform 0.6s;
     }
+
     .card.flipped .card-inner {
       transform: rotateY(180deg);
     }
+
     .card-front, .card-back {
       position: absolute;
       width: 100%;
       height: 100%;
-      backface-visibility: hidden;
       border-radius: 12px;
+      backface-visibility: hidden;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+
     .card-front {
-      background: #ffffff;
+      background: #fff;
     }
+
     .card-front img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: auto;
+      border-radius: 10px;
     }
-    .card-front .title {
-      padding: 1rem;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #333;
-      text-align: center;
-    }
+
     .download-btn {
+      margin-top: 10px;
       background-color: #1e40af;
       color: #fff;
-      padding: 0.8rem;
-      text-align: center;
-      font-size: 0.9rem;
+      padding: 8px 12px;
+      border-radius: 6px;
       text-decoration: none;
-      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
     }
+
     .card-back {
       background-color: #1e3a8a;
       color: #fff;
       transform: rotateY(180deg);
-      padding: 1rem;
       text-align: center;
-      justify-content: center;
     }
-    .card-back h3 {
-      margin-bottom: 1rem;
+
+    ul.roles {
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    ul.roles li {
+      margin-bottom: 0.5rem;
     }
 
     footer {
@@ -135,14 +181,13 @@
       padding: 2rem;
       margin-top: 2rem;
     }
+
     @media (min-width: 768px) {
       nav {
         position: fixed;
         height: 100vh;
         width: 220px;
-        display: flex;
         flex-direction: column;
-        align-items: center;
       }
       nav ul {
         flex-direction: column;
@@ -156,142 +201,144 @@
   </style>
 </head>
 <body>
-
-<nav>
-  <h2>My Portfolio</h2>
-  <ul>
-    <li><a href="#about">About Me</a></li>
-    <li><a href="#career">Career Objective</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<main>
-  <header id="about">
-    <img src="Revathi.jpg" alt="Profile Photo">
-    <h1>Mudalla Revathi</h1>
-    <p>Graphic Designer & FrontEnd Developer</p>
-  </header>
-
-  <section class="section" id="career">
-    <h2>Career Objective</h2>
-    <p>To pursue a challenging position in a reputable organization where I can utilize my creative and technical skills in Graphic Design and Engineering, while contributing to team success and personal growth.</p>
-  </section>
-
-  <section class="section" id="skills">
-    <h2>Skills</h2>
+  <nav>
+    <h2>My Portfolio</h2>
     <ul>
-      <li>Adobe Photoshop</li>
-      <li>Adobe Illustrator</li>
-      <li>Adobe InDesign</li>
-      <li>CorelDRAW</li>
-      <li>MS Office</li>
-      <li>HTML, CSS, JavaScript</li>
-      <li>Canva</li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#career">Career Objective</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <section class="section" id="experience">
-    <h2>Roles & Responsibilities</h2>
-    <h3>Graphic Designer - Efftronics Pvt. Ltd.</h3>
-    <ul>
-      <li>Designed posters, manuals, brochures, stickers, and flyers.</li>
-      <li>Created block diagrams, circuit diagrams, and ID cards.</li>
-      <li>Developed creative graphics for internal and client-based projects.</li>
-      <li>Used Adobe tools for layout, design, and branding material.</li>
-    </ul>
+  <main>
+    <header id="about">
+      <img src="Revathi.jpg" alt="Profile Photo">
+      <h1>Mudalla Revathi</h1>
+      <p>Graphic Designer & Front-End Developer</p>
+    </header>
 
-    <h3>Line Leader - Bharat FIH Mobile Manufacturing</h3>
-    <ul>
-      <li>Supervised production line operations and team management.</li>
-      <li>Maintained quality standards and production efficiency.</li>
-      <li>Managed workforce and ensured timely completion of targets.</li>
-      <li>Trained new employees and maintained production documentation.</li>
-    </ul>
-  </section>
+    <section class="section" id="career">
+      <h2>Career Objective</h2>
+      <p>To obtain a challenging position as a Graphic Designer in a creative environment where I can utilize my skills in visual storytelling and digital design to deliver innovative and effective design solutions that align with company goals and brand identity.</p>
+    </section>
 
-   <section class="section" id="projects">
-      <h2>Projects</h2>
-      <div class="card-grid">
-        <!-- Card 1 -->
-        <div class="card" onclick="flipCard(this)">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="3D Design-01.png" alt="Card 1">
-              <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-            </div>
-            <div class="card-back">
-              <h3>Project 1</h3>
-              <p>📥 Collection of faulty data loggers from stations.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card" onclick="flipCard(this)">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="Block Diagrams-01.png" alt="Card 2">
-              <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-            </div>
-            <div class="card-back">
-              <h3>Project 2</h3>
-              <p>🚦 Distributed EI network at NTPC yard.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card" onclick="flipCard(this)">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="India's waste-01-01.png" alt="Card 3">
-              <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-            </div>
-            <div class="card-back">
-              <h3>Project 3</h3>
-              <p>🧯 India's e-waste mess and pollution hazards.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="card" onclick="flipCard(this)">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="Womens Day Poster-01.png" alt="Card 4">
-              <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-            </div>
-            <div class="card-back">
-              <h3>Project 4</h3>
-              <p>👩‍🎨 Celebrating strength and achievements of women.</p>
-            </div>
-          </div>
-        </div>
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="carousel">
+        <div class="carousel-item">Adobe Photoshop</div>
+        <div class="carousel-item">Adobe Illustrator</div>
+        <div class="carousel-item">Adobe InDesign</div>
+        <div class="carousel-item">Canva</div>
+        <div class="carousel-item">CorelDRAW</div>
+        <div class="carousel-item">HTML</div>
+        <div class="carousel-item">CSS</div>
+        <div class="carousel-item">JavaScript</div>
+        <div class="carousel-item">MS Office</div>
       </div>
     </section>
 
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <h3>Graphic Designer – Efftronics Private Limited (1 Year)</h3>
+      <ul class="roles">
+        <li>Designed posters, flyers, brochures, manuals, ID cards, and 3D illustrations.</li>
+        <li>Created social media content, product stickers, and presentation material.</li>
+        <li>Developed architectural diagrams and railway signaling visuals.</li>
+      </ul>
+      <h3>Junior Engineer (Line Leader) – Bharat FIH Mobile Manufacturing (2.7 Years)</h3>
+      <ul class="roles">
+        <li>Led a mobile assembly line ensuring smooth daily operations.</li>
+        <li>Trained and supervised operators on process and safety protocols.</li>
+        <li>Maintained production schedules, resolved issues and met output targets.</li>
+      </ul>
+    </section>
 
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <p>Email: gantarevathi457@gmail.com | Phone: 9441925126</p>
-    <address>Thangellamudi,Thilak Nagar,Eluru,Eluru Dist A.P 534005</address>
-    <address>Tidco House B28 Block,Opposite chenetha Mangalagiri, Guntur Dist, A.P 522503</address>
+    <section class="section" id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      
+      <!-- Card 1 -->
+      <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="3D Design-01.png" alt="3D Design">
+            <div class="title">3D Design</div>
+            <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+          </div>
+          <div class="card-back">
+            <h3>Project 1</h3>
+            <p>Collection of faulty data loggers from stations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="Block Diagrams-01.png" alt="Block Diagram">
+            <div class="title">Block Diagram</div>
+            <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+          </div>
+          <div class="card-back">
+            <h3>Project 2</h3>
+            <p>Distributed EI network at NTPC yard.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="India's waste-01-01.png" alt="E-waste Awareness">
+            <div class="title">E-waste Awareness</div>
+            <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+          </div>
+          <div class="card-back">
+            <h3>Project 3</h3>
+            <p>India's e-waste mess and pollution hazards.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="Womens Day Poster-01.png" alt="Women's Day Poster">
+            <div class="title">Women's Day Poster</div>
+            <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+          </div>
+          <div class="card-back">
+            <h3>Project 4</h3>
+            <p>Celebrating strength and achievements of women.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
-</main>
 
-<footer>
-  <p>&copy; 2025 Mudalla Revathi. All rights reserved.</p>
-</footer>
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Email: gantarevathi457@gmail.com | Phone: 9441925126</p>
+      <address>Thangellamudi, Eluru, A.P 534005</address>
+      <address>Tidco House, Mangalagiri, Guntur, A.P 522503</address>
+    </section>
+  </main>
 
-<script>
-  function flipCard(card) {
-    card.classList.toggle('flipped');
-  }
-</script>
+  <footer>
+    <p>&copy; 2025 Mudalla Revathi. All rights reserved.</p>
+  </footer>
 
+  <script>
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+  </script>
 </body>
 </html>
