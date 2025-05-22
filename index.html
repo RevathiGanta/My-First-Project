@@ -128,29 +128,32 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      justify-content: flex-start;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .card-front {
       background: #fff;
+      padding: 0;
+      justify-content: space-between;
     }
 
     .card-front img {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
     }
 
     .download-btn {
-      margin-top: 10px;
       background-color: #1e40af;
       color: #fff;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 10px;
+      border-radius: 0 0 12px 12px;
       text-decoration: none;
       font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
     }
 
     .card-back {
@@ -158,6 +161,7 @@
       color: #fff;
       transform: rotateY(180deg);
       text-align: center;
+      padding: 1rem;
     }
 
     ul.roles {
