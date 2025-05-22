@@ -70,7 +70,6 @@
       perspective: 1000px;
       cursor: pointer;
     }
-
     .card-inner {
       position: relative;
       width: 100%;
@@ -78,11 +77,9 @@
       transform-style: preserve-3d;
       transition: transform 0.6s;
     }
-
     .card.flipped .card-inner {
       transform: rotateY(180deg);
     }
-
     .card-front, .card-back {
       position: absolute;
       width: 100%;
@@ -95,17 +92,14 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .card-front {
       background: #ffffff;
     }
-
     .card-front img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-
     .card-front .title {
       padding: 1rem;
       font-weight: 600;
@@ -113,7 +107,6 @@
       color: #333;
       text-align: center;
     }
-
     .download-btn {
       background-color: #1e40af;
       color: #fff;
@@ -123,7 +116,6 @@
       text-decoration: none;
       border-top: 1px solid #ccc;
     }
-
     .card-back {
       background-color: #1e3a8a;
       color: #fff;
@@ -132,7 +124,6 @@
       text-align: center;
       justify-content: center;
     }
-
     .card-back h3 {
       margin-bottom: 1rem;
     }
@@ -144,7 +135,6 @@
       padding: 2rem;
       margin-top: 2rem;
     }
-
     @media (min-width: 768px) {
       nav {
         position: fixed;
@@ -186,78 +176,110 @@
     <p>Graphic Designer & FrontEnd Developer</p>
   </header>
 
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <div class="card-grid">
-      
-      <!-- Card 1 -->
-      <div class="card" onclick="flipCard(this)">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="3D Design-01.png" alt="3D Design">
-            <div class="title">3D Design</div>
-            <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-          </div>
-          <div class="card-back">
-            <h3>Project 1</h3>
-            <p>Collection of faulty data loggers from stations.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card" onclick="flipCard(this)">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="Block Diagrams-01.png" alt="Block Diagram">
-            <div class="title">Block Diagram</div>
-            <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-          </div>
-          <div class="card-back">
-            <h3>Project 2</h3>
-            <p>Distributed EI network at NTPC yard.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card" onclick="flipCard(this)">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="India's waste-01-01.png" alt="E-waste Awareness">
-            <div class="title">E-waste Awareness</div>
-            <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-          </div>
-          <div class="card-back">
-            <h3>Project 3</h3>
-            <p>India's e-waste mess and pollution hazards.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="card" onclick="flipCard(this)">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="Womens Day Poster-01.png" alt="Women's Day Poster">
-            <div class="title">Women's Day Poster</div>
-            <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
-          </div>
-          <div class="card-back">
-            <h3>Project 4</h3>
-            <p>Celebrating strength and achievements of women.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <section class="section" id="career">
+    <h2>Career Objective</h2>
+    <p>To pursue a challenging position in a reputable organization where I can utilize my creative and technical skills in Graphic Design and Engineering, while contributing to team success and personal growth.</p>
   </section>
+
+  <section class="section" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Adobe Photoshop</li>
+      <li>Adobe Illustrator</li>
+      <li>Adobe InDesign</li>
+      <li>CorelDRAW</li>
+      <li>MS Office</li>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Canva</li>
+    </ul>
+  </section>
+
+  <section class="section" id="experience">
+    <h2>Roles & Responsibilities</h2>
+    <h3>Graphic Designer - Efftronics Pvt. Ltd.</h3>
+    <ul>
+      <li>Designed posters, manuals, brochures, stickers, and flyers.</li>
+      <li>Created block diagrams, circuit diagrams, and ID cards.</li>
+      <li>Developed creative graphics for internal and client-based projects.</li>
+      <li>Used Adobe tools for layout, design, and branding material.</li>
+    </ul>
+
+    <h3>Line Leader - Bharat FIH Mobile Manufacturing</h3>
+    <ul>
+      <li>Supervised production line operations and team management.</li>
+      <li>Maintained quality standards and production efficiency.</li>
+      <li>Managed workforce and ensured timely completion of targets.</li>
+      <li>Trained new employees and maintained production documentation.</li>
+    </ul>
+  </section>
+
+   <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="3D Design-01.png" alt="Card 1">
+              <a href="3D Design-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 1</h3>
+              <p>📥 Collection of faulty data loggers from stations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Block Diagrams-01.png" alt="Card 2">
+              <a href="Block Diagrams-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 2</h3>
+              <p>🚦 Distributed EI network at NTPC yard.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="India's waste-01-01.png" alt="Card 3">
+              <a href="India's waste-01-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 3</h3>
+              <p>🧯 India's e-waste mess and pollution hazards.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="Womens Day Poster-01.png" alt="Card 4">
+              <a href="Womens Day Poster-01.png" download class="download-btn" onclick="event.stopPropagation();">⬇ Download</a>
+            </div>
+            <div class="card-back">
+              <h3>Project 4</h3>
+              <p>👩‍🎨 Celebrating strength and achievements of women.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <section class="section" id="contact">
     <h2>Contact</h2>
     <p>Email: gantarevathi457@gmail.com | Phone: 9441925126</p>
-    <address>Thangellamudi, Eluru, A.P 534005</address>
-    <address>Tidco House, Mangalagiri, Guntur, A.P 522503</address>
+    <address>Thangellamudi,Thilak Nagar,Eluru,Eluru Dist A.P 534005</address>
+    <address>Tidco House B28 Block,Opposite chenetha Mangalagiri, Guntur Dist, A.P 522503</address>
   </section>
 </main>
 
